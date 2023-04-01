@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'main_page:index' %}">Головна</a>
+                    <span class="breadcrumb-item active">Всі товари в магазині</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Shop Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+
+                {% include 'filter_main.html' %}
+
+            </div>
+            <!-- Shop Sidebar End -->
+
+            {% include 'product_list_block_product.html' %}
+
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+{% endblock %}

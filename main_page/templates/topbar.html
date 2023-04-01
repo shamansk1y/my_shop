@@ -1,0 +1,87 @@
+{% load static %}
+
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-1 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center h-100">
+                    <a class="text-body mr-3" href="{% url 'info_page' 'about' %}">Про нас</a>
+                    <a class="text-body mr-3" href="{% url 'main_page:contacts' %}">Контакти</a>
+                    <a class="text-body mr-3" href="{% url 'info_page' 'user-agreement' %}">Користувацька угода</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">My Account</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                        {% if not user_auth %}
+                            <a class="dropdown-item" href="{% url 'login_view' %}">Увійти</a>
+                            <a class="dropdown-item" href="{% url 'registration_view' %}">Зареєструватись</a>
+                        {% else %}
+                            <a class="dropdown-item" href="{% url 'order_history' %}">Історія замовлень</a>
+                            <a class="dropdown-item" href="{% url 'main_page:contacts' %}">Контактна інформація</a>
+                            <a class="dropdown-item" href="{% url 'favorite_list' %}">Вибрані товари</a>
+                            <a class="dropdown-item" href="{% url 'logout_view' %}">Вихід</a>
+                        {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="btn-group mx-2">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">UAH</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button class="dropdown-item" type="button">USD</button>
+                            <button class="dropdown-item" type="button">GBP</button>
+                            <button class="dropdown-item" type="button">EUR</button>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">UA</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button class="dropdown-item" type="button">EN</button>
+                            <button class="dropdown-item" type="button">RU</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-inline-flex align-items-center d-block d-lg-none">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'favorite_list' %}" class="btn px-0">
+                            <i class="fas fa-heart text-primary"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">{{ favorites_count }}</span>
+                        </a>
+                    {% endif %}
+                    <a href="/cart" class="btn px-0 ml-2">
+                        <i class="fas fa-shopping-cart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">{{ cart|length }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+            <div class="col-lg-4">
+                <a href="{% url 'main_page:index' %}" class="text-decoration-none">
+                    <span class="h1 text-uppercase text-primary bg-dark px-2">Joma</span>
+                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
+                </a>
+            </div>
+
+            <div class="col-lg-4 col-6 text-left">
+                <form action="{% url 'main_page:search' %}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Що шукаєте?">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary" onclick="this.closest('form').submit();" type="submit">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-4 col-6 text-right">
+                <p class="m-0">{{ contacts.email }}</p>
+                <h5 class="m-0">{{ contacts.phone_1 }}</h5>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->

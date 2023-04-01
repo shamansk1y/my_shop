@@ -1,0 +1,40 @@
+{% load static %}
+
+<!-- Products Start -->
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Останні надходження товару</span></h2>
+    <div class="row px-xl-5">
+        {% for product in last_products %}
+
+            <div class="col-lg-3 col-md-6 col-sm-6 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <a href="{{ product.get_absolute_url }}">
+                            <img class="img-fluid w-100 product-img" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/product.png" %}{% endif %}">
+                        </a>
+                        <div class="product-action">
+                            <a class="btn btn-outline-dark btn-square" href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none product-name" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            {% if product.discounted_price %}
+                                <h5>{{ product.discounted_price }} UAH</h5><h6 class="text-muted ml-2"><del>{{ product.price }} UAH</del></h6>
+                            {% else %}
+                                <h5>{{ product.price }} UAH</h5>
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-start mt-2">
+                            <button class="btn btn-warning mr-2" onclick="location.href='{{ product.get_absolute_url }}'">Переглянути товар</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+</div>
+<!-- Products End -->

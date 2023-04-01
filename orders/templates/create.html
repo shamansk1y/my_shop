@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'main_page:index' %}">Головна</a>
+                    <span class="breadcrumb-item active">Інформація для відправки замовлення</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row px-xl-5">
+                <div class="col-lg-8">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Інформація про клієнта</span></h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Прізвище:</label>
+                            {{ form.last_name }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Ім'я:</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Контактний № мобільного тел. </label>
+                            {{ form.phone }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Додаткова інформація</label>
+                            {{ form.message }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Сума замовлення</span></h5>
+                    <div class="bg-light p-30 mb-5">
+                        <div class="border-bottom">
+                            <h5 class="mb-3">Товари:</h5>
+                            {% for item in cart %}
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    <p>{{ item.product.name }}<br> розмір: {{ item.size }}<br> кількість: {{ item.quantity }}шт.</p>
+                                    <p>{{ item.total_price }} UAH</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="pt-2">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5>Разом</h5>
+                                <h5>{{ cart.get_total_price }} UAH</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Варіанти доставки</span></h5>
+                        <div class="bg-light mb-5">
+                            <div class="bg-light p-30 border-bottom">
+                                {{ form.delivery_option.0 }}<br>
+                                {{ form.city }}
+                                {{ form.postal_code }}
+                            </div>
+                            <div class="bg-light p-30 border-bottom">
+                                {{ form.delivery_option.1 }}
+                            </div>
+                            <div class="bg-light p-30 border-bottom">
+                                {{ form.delivery_option.2 }}<br>
+                                {{ form.city }}
+                                {{ form.address }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Варіанти оплати</span></h5>
+                        <div class="bg-light p-30">
+                            {% for radio in form.payment_option %}
+                                <div>
+                                    {{ radio }}
+                                    <label for="{{ radio.id_for_label }}"></label>
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-block btn-primary font-weight-bold py-3" type="submit">Підтвердити замовлення</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

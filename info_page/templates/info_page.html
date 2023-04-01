@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'main_page:index' %}">Головна</a>
+                    <span class="breadcrumb-item active">{{ page.title }}</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+   <!-- Breadcrumb End -->
+
+<div class="container">
+    <div class="row">
+
+        <!-- Post Image Start -->
+        <div class="col-md-3">
+            <div class="about-fixed">
+                <div class="my-pic">
+                    <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid">
+                </div>
+
+            </div>
+        </div>
+        <!-- Post Image End -->
+
+        <!-- Blog Post Start -->
+        <div class="col-md-9">
+            <div class="col-md-12 page-body">
+                <div class="row">
+
+                    <div class="col-md-12 content-page">
+                        <div class="col-md-12 blog-post">
+
+                            <!-- Post Headline Start -->
+                            <div class="post-title">
+                                <h1 class="text-dark text-uppercase">{{ page.title }}</h1>
+                            </div>
+                            <!-- Post Headline End -->
+
+
+                            <p>{{ page.content|safe }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
