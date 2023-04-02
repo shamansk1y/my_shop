@@ -52,8 +52,6 @@ INSTALLED_APPS = [
     'blogpost.apps.BlogpostConfig',
     'info_page.apps.InfoPageConfig',
     'ckeditor',
-    'mathfilters',
-    'django.contrib.humanize',
     'account.apps.AccountConfig',
 
 
