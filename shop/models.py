@@ -381,8 +381,8 @@ class Coupon(models.Model):
 
     class Meta:
         ordering = ['-end_date']
-<<<<<<< HEAD
+
         verbose_name_plural = 'Купони на знижку'
-=======
+
         verbose_name_plural = 'Купони на знижку'
->>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
+
