@@ -97,13 +97,8 @@ def sub_category_list(request, slug):
 
     sizes = Size.objects.filter(products__in=cat_products).distinct()
     manufacturers = Manufacturer.objects.filter(product__in=cat_products).distinct()
-<<<<<<< HEAD
     count = int(request.GET.get('count', 24) or 24)
     paginator = Paginator(cat_products, count)
-=======
-
-    paginator = Paginator(cat_products, 24)
->>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     data = {
