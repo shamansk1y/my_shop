@@ -1,5 +1,9 @@
 from django.db import models
+<<<<<<< HEAD
 from main_page.utils import get_file_name, get_file_name_id
+=======
+from main_page.utils import get_file_name
+>>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
 from django.utils import timezone
 from shop.models import Product
 
@@ -8,7 +12,11 @@ class Slider(models.Model):
 
     title = models.CharField(max_length=50, verbose_name="Назва слайду")
     position = models.SmallIntegerField(verbose_name="Позиція")
+<<<<<<< HEAD
     image = models.ImageField(upload_to=get_file_name_id, verbose_name="Зображення")
+=======
+    image = models.ImageField(upload_to=get_file_name, verbose_name="Зображення")
+>>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
     is_visible = models.BooleanField(default=True, verbose_name="Видимість")
     h_1 = models.CharField(max_length=250, blank=True, verbose_name="Заголовок")
     desc = models.TextField(max_length=500, blank=True, verbose_name="Опис")
@@ -26,22 +34,38 @@ class Slider(models.Model):
 class Baner(models.Model):
     title = models.CharField(max_length=50, verbose_name="Назва слайду")
     position = models.SmallIntegerField(verbose_name="Позиція")
+<<<<<<< HEAD
     image_1 = models.ImageField(upload_to=get_file_name_id, verbose_name="Зображення банер 1")
+=======
+    image_1 = models.ImageField(upload_to=get_file_name, verbose_name="Зображення банер 1")
+>>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
     h_1 = models.CharField(max_length=250, blank=True, verbose_name="Заголовок банер 1")
     desc_1 = models.TextField(max_length=500, blank=True, verbose_name="Опис банер 1")
     tab_1 = models.CharField(max_length=50, blank=True, verbose_name="Текст кнопки банер 1")
     tab_url_1 = models.URLField(blank=True, verbose_name="Посилання з кнопки банер 1")
+<<<<<<< HEAD
     image_2 = models.ImageField(upload_to=get_file_name_id, verbose_name="Зображення банер 2")
+=======
+    image_2 = models.ImageField(upload_to=get_file_name, verbose_name="Зображення банер 2")
+>>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
     h_2 = models.CharField(max_length=250, blank=True, verbose_name="Заголовок банер 2")
     desc_2 = models.TextField(max_length=500, blank=True, verbose_name="Опис банер 2")
     tab_2 = models.CharField(max_length=50, blank=True, verbose_name="Текст кнопки банер 2")
     tab_url_2 = models.URLField(blank=True, verbose_name="Посилання з кнопки банер 2")
+<<<<<<< HEAD
     image_3 = models.ImageField(upload_to=get_file_name_id, verbose_name="Зображення банер 3")
+=======
+    image_3 = models.ImageField(upload_to=get_file_name, verbose_name="Зображення банер 3")
+>>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
     h_3 = models.CharField(max_length=250, blank=True, verbose_name="Заголовок банер 3")
     desc_3 = models.TextField(max_length=500, blank=True, verbose_name="Опис банер 3")
     tab_3 = models.CharField(max_length=50, blank=True, verbose_name="Текст кнопки банер 3")
     tab_url_3 = models.URLField(blank=True, verbose_name="Посилання з кнопки банер 3")
+<<<<<<< HEAD
     image_4 = models.ImageField(upload_to=get_file_name_id, verbose_name="Зображення банер 4")
+=======
+    image_4 = models.ImageField(upload_to=get_file_name, verbose_name="Зображення банер 4")
+>>>>>>> f54e6daafcc4fe9a70b2717eb1659f61a822a314
     h_4 = models.CharField(max_length=250, blank=True, verbose_name="Заголовок банер 4")
     desc_4 = models.TextField(max_length=500, blank=True, verbose_name="Опис банер 4")
     tab_4 = models.CharField(max_length=50, blank=True, verbose_name="Текст кнопки банер 4")
